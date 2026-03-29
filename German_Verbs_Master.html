@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>German Separable Verbs Master Tool</title>
+<style>
+body {font-family: Arial; background:#f4f4f4; padding:20px;}
+h1{text-align:center;}
+.card{background:white;padding:15px;margin:10px 0;border-radius:10px;}
+button{margin:5px;padding:5px 10px;cursor:pointer;}
+.correct{color:green;}
+.wrong{color:red;}
+</style>
+</head>
+
+<body>
+
+<h1>🇩🇪 German Separable Verbs Master Tool 🔊</h1>
+
+<input type="text" id="search" placeholder="Search verb..." onkeyup="filterVerbs()" />
+
+<div id="verbs"></div>
+
+<h2>🧠 Quiz Mode</h2>
+<div id="quiz"></div>
+
+<script>
+
+const verbs = [
+{v:"ankommen",s:"Ich komme um acht Uhr an."},
+{v:"anfangen",s:"Der Unterricht fängt um neun Uhr an."},
+{v:"aufstehen",s:"Ich stehe jeden Tag früh auf."},
+{v:"ausgehen",s:"Wir gehen heute Abend aus."},
+{v:"einladen",s:"Ich lade dich zur Party ein."},
+{v:"einkaufen",s:"Ich kaufe im Supermarkt ein."},
+{v:"fernsehen",s:"Wir sehen jeden Abend fern."},
+{v:"mitkommen",s:"Kommst du mit mir mit?"},
+{v:"nachdenken",s:"Ich denke darüber nach."},
+{v:"vorbereiten",s:"Ich bereite mich auf die Prüfung vor."},
+{v:"zurückkommen",s:"Er kommt später zurück."},
+{v:"zumachen",s:"Mach bitte die Tür zu."}
+];
+
+let progress = JSON.parse(localStorage.getItem("progress")) || {};
+
+const container = document.getElementById("verbs");
+
+function speak(text){
+let u = new SpeechSynthesisUtterance(text);
+u.lang="de-DE";
+speechSynthesis.speak(u);
+}
+
+function render(list){
+container.innerHTML="";
+list.forEach(item=>{
+let div=document.createElement("div");
+div.className="card";
+
+div.innerHTML=`
+<b>${item.v}</b><br>
+${item.s}<br>
+<button onclick="speak('${item.v}')">🔊 Verb</button>
+<button onclick="speak('${item.s}')">🔊 Sentence</button>
+<button onclick="markLearned('${item.v}')">✅ Learned</button>
+<span>${progress[item.v] ? "✔️" : ""}</span>
+`;
+
+container.appendChild(div);
+});
+}
+
+function filterVerbs(){
+let val=document.getElementById("search").value.toLowerCase();
+let filtered=verbs.filter(v=>v.v.includes(val));
+render(filtered);
+}
+
+function markLearned(v){
+progress[v]=true;
+localStorage.setItem("progress",JSON.stringify(progress));
+render(verbs);
+}
+
+render(verbs);
+
+// Quiz
+function startQuiz(){
+let q=verbs[Math.floor(Math.random()*verbs.length)];
+document.getElementById("quiz").innerHTML=`
+<p>What is the verb in this sentence?</p>
+<p>${q.s}</p>
+<input id="ans"/>
+<button onclick="check('${q.v}')">Submit</button>
+<p id="result"></p>
+`;
+}
+
+function check(ans){
+let user=document.getElementById("ans").value;
+let res=document.getElementById("result");
+if(user===ans){
+res.innerHTML="<span class='correct'>Correct!</span>";
+}else{
+res.innerHTML="<span class='wrong'>Wrong! Answer: "+ans+"</span>";
+}
+}
+
+startQuiz();
+
+</script>
+
+</body>
+</html>

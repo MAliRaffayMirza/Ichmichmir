@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>German Dative Verbs with Audio</title>
+<style>
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+.container {
+    max-width: 800px;
+    margin: 50px auto;
+    background: #fff;
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+h1 {
+    text-align: center;
+    color: #4a47a3;
+    margin-bottom: 30px;
+}
+.verb {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 15px;
+    margin: 10px 0;
+    border-radius: 10px;
+    background: #f5f7ff;
+    transition: 0.3s;
+}
+.verb:hover {
+    background: #e0e7ff;
+    transform: scale(1.02);
+}
+.german {
+    font-weight: bold;
+    color: #222;
+}
+.english {
+    color: #555;
+}
+button {
+    border: none;
+    background: #4a47a3;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+button:hover {
+    background: #372f8a;
+}
+footer {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 14px;
+    color: #888;
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+<h1>German Dative Verbs 🔊</h1>
+
+<div class="verb"><span class="german">helfen</span><span class="english">to help</span><button onclick="speak('helfen')">🔊</button></div>
+<div class="verb"><span class="german">danken</span><span class="english">to thank</span><button onclick="speak('danken')">🔊</button></div>
+<div class="verb"><span class="german">folgen</span><span class="english">to follow</span><button onclick="speak('folgen')">🔊</button></div>
+<div class="verb"><span class="german">glauben</span><span class="english">to believe</span><button onclick="speak('glauben')">🔊</button></div>
+<div class="verb"><span class="german">gehören</span><span class="english">to belong to</span><button onclick="speak('gehören')">🔊</button></div>
+<div class="verb"><span class="german">fehlen</span><span class="english">to be missing</span><button onclick="speak('fehlen')">🔊</button></div>
+<div class="verb"><span class="german">passen</span><span class="english">to suit</span><button onclick="speak('passen')">🔊</button></div>
+<div class="verb"><span class="german">schmecken</span><span class="english">to taste good</span><button onclick="speak('schmecken')">🔊</button></div>
+<div class="verb"><span class="german">antworten</span><span class="english">to answer</span><button onclick="speak('antworten')">🔊</button></div>
+<div class="verb"><span class="german">begegnen</span><span class="english">to meet</span><button onclick="speak('begegnen')">🔊</button></div>
+<div class="verb"><span class="german">gefallen</span><span class="english">to like</span><button onclick="speak('gefallen')">🔊</button></div>
+<div class="verb"><span class="german">gratulieren</span><span class="english">to congratulate</span><button onclick="speak('gratulieren')">🔊</button></div>
+<div class="verb"><span class="german">nützen</span><span class="english">to be useful</span><button onclick="speak('nützen')">🔊</button></div>
+<div class="verb"><span class="german">schaden</span><span class="english">to harm</span><button onclick="speak('schaden')">🔊</button></div>
+<div class="verb"><span class="german">vertrauen</span><span class="english">to trust</span><button onclick="speak('vertrauen')">🔊</button></div>
+<div class="verb"><span class="german">widersprechen</span><span class="english">to contradict</span><button onclick="speak('widersprechen')">🔊</button></div>
+
+<footer>Click 🔊 to hear pronunciation</footer>
+</div>
+
+<script>
+function speak(word) {
+    let utterance = new SpeechSynthesisUtterance(word);
+    utterance.lang = 'de-DE';
+    speechSynthesis.speak(utterance);
+}
+</script>
+
+</body>
+</html>

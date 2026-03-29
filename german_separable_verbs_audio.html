@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>German Separable Verbs - Audio Learning</title>
+<style>
+body{
+    font-family:Segoe UI, Tahoma, sans-serif;
+    margin:0;
+    background:linear-gradient(135deg,#667eea,#764ba2);
+}
+.container{
+    max-width:900px;
+    margin:40px auto;
+    background:#fff;
+    padding:25px;
+    border-radius:20px;
+    box-shadow:0 10px 30px rgba(0,0,0,0.2);
+}
+h1{
+    text-align:center;
+    color:#4a47a3;
+    margin-bottom:10px;
+}
+.subtitle{
+    text-align:center;
+    color:#666;
+    margin-bottom:25px;
+}
+.section{
+    margin-top:25px;
+}
+.verb-card{
+    background:#f5f7ff;
+    padding:12px;
+    margin:10px 0;
+    border-radius:12px;
+    transition:0.3s;
+}
+.verb-card:hover{
+    transform:scale(1.01);
+    background:#e8ecff;
+}
+.top-row{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+.german{
+    font-weight:bold;
+    font-size:16px;
+}
+.english{
+    color:#555;
+    font-size:14px;
+}
+.sentence{
+    margin-top:6px;
+    color:#333;
+}
+button{
+    background:#4a47a3;
+    color:white;
+    border:none;
+    padding:6px 10px;
+    border-radius:8px;
+    cursor:pointer;
+}
+button:hover{
+    background:#372f8a;
+}
+footer{
+    text-align:center;
+    margin-top:20px;
+    color:#888;
+    font-size:13px;
+}
+</style>
+</head>
+<body>
+<div class="container">
+<h1>German Separable Verbs 🔊</h1>
+<div class="subtitle">Click 🔊 to hear pronunciation of sentences</div>
+
+<div class="section">
+
+<div class="verb-card">
+<div class="top-row">
+<span class="german">ankommen</span><span class="english">to arrive</span>
+<button onclick="speak('Ich komme um acht Uhr an.')">🔊</button>
+</div>
+<div class="sentence">Ich komme um acht Uhr an.</div>
+</div>
+
+<div class="verb-card">
+<div class="top-row">
+<span class="german">anfangen</span><span class="english">to begin</span>
+<button onclick="speak('Der Unterricht fängt um neun Uhr an.')">🔊</button>
+</div>
+<div class="sentence">Der Unterricht fängt um neun Uhr an.</div>
+</div>
+
+<div class="verb-card">
+<div class="top-row">
+<span class="german">aufstehen</span><span class="english">to get up</span>
+<button onclick="speak('Ich stehe jeden Tag früh auf.')">🔊</button>
+</div>
+<div class="sentence">Ich stehe jeden Tag früh auf.</div>
+</div>
+
+<div class="verb-card">
+<div class="top-row">
+<span class="german">ausgehen</span><span class="english">to go out</span>
+<button onclick="speak('Wir gehen heute Abend aus.')">🔊</button>
+</div>
+<div class="sentence">Wir gehen heute Abend aus.</div>
+</div>
+
+<div class="verb-card">
+<div class="top-row">
+<span class="german">einladen</span><span class="english">to invite</span>
+<button onclick="speak('Ich lade dich zur Party ein.')">🔊</button>
+</div>
+<div class="sentence">Ich lade dich zur Party ein.</div>
+</div>
+
+<div class="verb-card">
+<div class="top-row">
+<span class="german">einkaufen</span><span class="english">to shop</span>
+<button onclick="speak('Ich kaufe im Supermarkt ein.')">🔊</button>
+</div>
+<div class="sentence">Ich kaufe im Supermarkt ein.</div>
+</div>
+
+<div class="verb-card">
+<div class="top-row">
+<span class="german">fernsehen</span><span class="english">to watch TV</span>
+<button onclick="speak('Wir sehen jeden Abend fern.')">🔊</button>
+</div>
+<div class="sentence">Wir sehen jeden Abend fern.</div>
+</div>
+
+<div class="verb-card">
+<div class="top-row">
+<span class="german">mitkommen</span><span class="english">to come along</span>
+<button onclick="speak('Kommst du mit mir mit?')">🔊</button>
+</div>
+<div class="sentence">Kommst du mit mir mit?</div>
+</div>
+
+<div class="verb-card">
+<div class="top-row">
+<span class="german">nachdenken</span><span class="english">to think about</span>
+<button onclick="speak('Ich denke darüber nach.')">🔊</button>
+</div>
+<div class="sentence">Ich denke darüber nach.</div>
+</div>
+
+<div class="verb-card">
+<div class="top-row">
+<span class="german">vorbereiten</span><span class="english">to prepare</span>
+<button onclick="speak('Ich bereite mich auf die Prüfung vor.')">🔊</button>
+</div>
+<div class="sentence">Ich bereite mich auf die Prüfung vor.</div>
+</div>
+
+<div class="verb-card">
+<div class="top-row">
+<span class="german">zurückkommen</span><span class="english">to come back</span>
+<button onclick="speak('Er kommt später zurück.')">🔊</button>
+</div>
+<div class="sentence">Er kommt später zurück.</div>
+</div>
+
+<div class="verb-card">
+<div class="top-row">
+<span class="german">zumachen</span><span class="english">to close</span>
+<button onclick="speak('Mach bitte die Tür zu.')">🔊</button>
+</div>
+<div class="sentence">Mach bitte die Tür zu.</div>
+</div>
+
+</div>
+
+<footer>Learn German Smartly 🚀</footer>
+</div>
+
+<script>
+function speak(text){
+    let msg = new SpeechSynthesisUtterance(text);
+    msg.lang = 'de-DE';
+    speechSynthesis.speak(msg);
+}
+</script>
+</body>
+</html>
