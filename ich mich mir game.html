@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>German Pronoun Master</title>
+
+<style>
+
+body{
+font-family:Arial;
+background:#0f172a;
+color:white;
+text-align:center;
+padding:30px;
+}
+
+h1{
+font-size:40px;
+}
+
+#gameBox{
+background:#1e293b;
+padding:40px;
+width:500px;
+margin:auto;
+border-radius:15px;
+box-shadow:0 0 20px rgba(0,0,0,0.4);
+}
+
+#question{
+font-size:28px;
+margin-bottom:20px;
+}
+
+input{
+font-size:22px;
+padding:10px;
+width:200px;
+text-align:center;
+border-radius:8px;
+border:none;
+}
+
+button{
+font-size:18px;
+padding:10px 20px;
+margin-top:10px;
+border:none;
+border-radius:8px;
+background:#3b82f6;
+color:white;
+cursor:pointer;
+}
+
+button:hover{
+background:#2563eb;
+}
+
+#result{
+margin-top:15px;
+font-size:20px;
+}
+
+#score{
+margin-top:20px;
+font-size:22px;
+}
+
+#timer{
+font-size:22px;
+color:#facc15;
+margin-bottom:10px;
+}
+
+</style>
+</head>
+
+<body>
+
+<h1>German Pronoun Master</h1>
+
+<div id="gameBox">
+
+<div id="timer">Time: 360 Seconds</div>
+
+<div id="question"></div>
+
+<input id="answer" placeholder="Type answer">
+
+<br>
+
+<button onclick="checkAnswer()">Submit</button>
+
+<div id="result"></div>
+
+<div id="score">Score: 0</div>
+
+</div>
+
+<script>
+
+const pronouns = [
+
+{nom:"ich", akk:"mich", dat:"mir"},
+{nom:"du", akk:"dich", dat:"dir"},
+{nom:"er", akk:"ihn", dat:"ihm"},
+{nom:"sie (she)", akk:"sie", dat:"ihr"},
+{nom:"es", akk:"es", dat:"ihm"},
+{nom:"wir", akk:"uns", dat:"uns"},
+{nom:"ihr", akk:"euch", dat:"euch"},
+{nom:"sie (they)", akk:"sie", dat:"ihnen"},
+{nom:"Sie (formal)", akk:"Sie", dat:"Ihnen"}
+
+]
+
+let currentAnswer=""
+let score=0
+
+function newQuestion(){
+
+let p = pronouns[Math.floor(Math.random()*pronouns.length)]
+
+let types=["Akkusativ","Dativ"]
+let type=types[Math.floor(Math.random()*types.length)]
+
+currentAnswer = type=="Akkusativ"?p.akk:p.dat
+
+document.getElementById("question").innerHTML =
+"What is the <b>"+type+"</b> form of <b>"+p.nom+"</b> ?"
+
+document.getElementById("answer").value=""
+document.getElementById("result").innerHTML=""
+
+}
+
+function checkAnswer(){
+
+let user=document.getElementById("answer").value.trim()
+
+if(user===currentAnswer){
+
+score++
+document.getElementById("result").innerHTML="✅ Correct!"
+document.getElementById("result").style.color="#22c55e"
+
+}else{
+
+document.getElementById("result").innerHTML=
+"❌ Correct answer: "+currentAnswer
+
+document.getElementById("result").style.color="#ef4444"
+
+}
+
+document.getElementById("score").innerHTML="Score: "+score
+
+setTimeout(newQuestion,1000)
+
+}
+
+let time=360
+
+function timer(){
+
+time--
+
+document.getElementById("timer").innerHTML="Time: "+time
+
+if(time<=0){
+
+alert("Game Over! Your Score: "+score)
+
+location.reload()
+
+}
+
+}
+
+setInterval(timer,1000)
+
+newQuestion()
+
+</script>
+
+</body>
+</html>
